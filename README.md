@@ -1,99 +1,237 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# NestJS Todo API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A simple Todo API built with NestJS, Prisma, and PostgreSQL. This API allows you to perform CRUD operations on Todo items.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
 
-## Description
+- **Create a Todo**: Add a new Todo item with a title, description, and optional completion status.
+- **Read Todos**: Fetch all Todo items or a single Todo by its ID.
+- **Update a Todo**: Modify the title, description, or completion status of an existing Todo.
+- **Delete a Todo**: Remove a Todo item by its ID.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Technologies Used
 
-## Project setup
+- **[NestJS](https://nestjs.com/)**: A progressive Node.js framework for building efficient and scalable server-side applications.
+- **[Prisma](https://www.prisma.io/)**: A modern database toolkit for TypeScript and Node.js.
+- **[PostgreSQL](https://www.postgresql.org/)**: A powerful, open-source relational database system.
+- **[TypeScript](https://www.typescriptlang.org/)**: A typed superset of JavaScript that compiles to plain JavaScript.
 
-```bash
-$ npm install
-```
+---
 
-## Compile and run the project
+## Prerequisites
 
-```bash
-# development
-$ npm run start
+Before running the project, ensure you have the following installed:
 
-# watch mode
-$ npm run start:dev
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
+- [PostgreSQL](https://www.postgresql.org/download/) (or any other database supported by Prisma)
+- [Prisma CLI](https://www.prisma.io/docs/concepts/components/prisma-cli) (install globally via `npm install -g prisma`)
 
-# production mode
-$ npm run start:prod
-```
+---
 
-## Run tests
+## Setup
+
+### 1. Clone the Repository
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone https://github.com/your-username/nestjs-todo-api.git
+cd nestjs-todo-api
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### 2. Install Dependencies
 
 ```bash
-$ npm install -g mau
-$ mau deploy
+npm install
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### 3. Set Up the Database
 
-## Resources
+1. Create a PostgreSQL database (e.g., `todo_db`).
+2. Update the `.env` file with your database connection details:
 
-Check out a few resources that may come in handy when working with NestJS:
+   ```env
+   DATABASE_URL="postgresql://username:password@localhost:5432/todo_db?schema=public"
+   ```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+3. Run Prisma migrations to set up the database schema:
 
-## Support
+   ```bash
+   npx prisma migrate dev --name init
+   ```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### 4. Start the Application
 
-## Stay in touch
+```bash
+npm run start:dev
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+The API will be available at `http://localhost:3000`.
+The Swagger UI will be availbe at `http://localhost:3000/api`.
 
-## License
+---
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## API Endpoints
+
+### **Todos**
+
+| Method | Endpoint     | Description                        |
+| ------ | ------------ | ---------------------------------- |
+| GET    | `/todos`     | Fetch all todos (with pagination). |
+| GET    | `/todos/:id` | Fetch a single todo by ID.         |
+| POST   | `/todos`     | Create a new todo.                 |
+| PATCH  | `/todos/:id` | Update an existing todo.           |
+| DELETE | `/todos/:id` | Delete a todo by ID.               |
+
+---
+
+## Example Requests
+
+### Create a Todo
+
+**Request:**
+
+```bash
+POST /todos
+Content-Type: application/json
+
+{
+  "title": "Buy groceries",
+  "description": "Milk, Bread, Eggs",
+  "isCompleted": false
+}
+```
+
+**Response:**
+
+```json
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000",
+  "title": "Buy groceries",
+  "description": "Milk, Bread, Eggs",
+  "isCompleted": false,
+  "createdAt": "2023-10-01T12:00:00.000Z",
+  "updatedAt": "2023-10-01T12:00:00.000Z"
+}
+```
+
+### Fetch All Todos
+
+**Request:**
+
+```bash
+GET /todos
+```
+
+**Response:**
+
+```json
+[
+  {
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "title": "Buy groceries",
+    "description": "Milk, Bread, Eggs",
+    "isCompleted": false,
+    "createdAt": "2023-10-01T12:00:00.000Z",
+    "updatedAt": "2023-10-01T12:00:00.000Z"
+  },
+  {
+    "id": "123e4567-e89b-12d3-a456-426614174001",
+    "title": "Walk the dog",
+    "description": "Take the dog for a walk in the park",
+    "isCompleted": true,
+    "createdAt": "2023-10-01T12:00:00.000Z",
+    "updatedAt": "2023-10-01T12:00:00.000Z"
+  }
+]
+```
+
+### Fetch a Single Todo
+
+**Request:**
+
+```bash
+GET /todos/123e4567-e89b-12d3-a456-426614174000
+```
+
+**Response:**
+
+```json
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000",
+  "title": "Buy groceries",
+  "description": "Milk, Bread, Eggs",
+  "isCompleted": false,
+  "createdAt": "2023-10-01T12:00:00.000Z",
+  "updatedAt": "2023-10-01T12:00:00.000Z"
+}
+```
+
+### Update a Todo
+
+**Request:**
+
+```bash
+PATCH /todos/123e4567-e89b-12d3-a456-426614174000
+Content-Type: application/json
+
+{
+  "isCompleted": true
+}
+```
+
+**Response:**
+
+```json
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000",
+  "title": "Buy groceries",
+  "description": "Milk, Bread, Eggs",
+  "isCompleted": true,
+  "createdAt": "2023-10-01T12:00:00.000Z",
+  "updatedAt": "2023-10-01T12:30:00.000Z"
+}
+```
+
+### Delete a Todo
+
+**Request:**
+
+```bash
+DELETE /todos/123e4567-e89b-12d3-a456-426614174000
+```
+
+**Response:**
+
+```json
+{}
+```
+
+---
+
+## Running Tests
+
+To run the unit tests, use the following command:
+
+```bash
+npm run test
+```
+
+---
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature-name`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/your-feature-name`).
+5. Open a pull request.
+
+---
+
+## Acknowledgments
+
+- [NestJS Documentation](https://docs.nestjs.com/)
+- [Prisma Documentation](https://www.prisma.io/docs/)
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
